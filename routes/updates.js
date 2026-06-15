@@ -1,11 +1,19 @@
 import express from "express";
+import db from "../db.js";
 
 
-const router = express.Router();
+const router=express.Router();
 
-
-router.get("/", (req, res) => {
-  res.send("Auth route works");
+router.get("/",async(req,res)=>{
+    const result=await db.query("SELECT * FROM updates ORDER BY id");
+    res.json(result.rows);
 });
+
+
+router.get("/:patinetId",async(req,res)=>{
+    const result=await db.query("SELECT * FROM updates WHERE patient_id= $1",[req.params.patinetId]);
+    res.json(result.rows);
+});
+
 
 export default router;
