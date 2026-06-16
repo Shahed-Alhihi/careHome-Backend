@@ -1,12 +1,12 @@
 -- Patients
 INSERT INTO patients
-(patient_name, age, room, condition, admission_date, emergency_contact, patient_image)
+(patient_name, age, room, condition, admission_date, emergency_contact)
 VALUES
-('Margaret Thompson', 78, '101', 'Stable', '2025-01-10', 'Sara Thompson - 079876543', '/1.jpg'),
+('Margaret Thompson', 78, '101', 'Stable', '2025-01-10', 'Sara Thompson - 079876543'),
 
-('Robert Wilson', 82, '102', 'Needs Monitoring', '2025-02-10', 'James Wilson - 079878765', '/2.webp'),
+('Robert Wilson', 82, '102', 'Needs Monitoring', '2025-02-10', 'James Wilson - 079878765'),
 
-('Elizabeth Brown', 75, '103', 'Good', '2025-05-15', 'Emma Brown - 079345678', '/3.jpg');
+('Elizabeth Brown', 75, '103', 'Good', '2025-05-15', 'Emma Brown - 079345678');
 
 
 -- Nurses
