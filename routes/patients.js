@@ -17,13 +17,13 @@ router.get("/:id",async(req,res)=>{
 
 router.post("/", async(req,res)=>{
     const{
-        name,age,room, condition, admission_date,emergency_contact,image}=req.body;
+        patient_name,age,room, condition, admission_date,emergency_contact}=req.body;
 
         const result=await db.query(
-            `INSERT INTO patients(name,age,room, condition, admission_date,emergency_contact,image) 
-            VALUES ($1,$2,$3,$4,$5,$6,$7)
+            `INSERT INTO patients(patient_name,age,room, condition, admission_date,emergency_contact) 
+            VALUES ($1,$2,$3,$4,$5,$6)
             RETURNING *`,
-            [name,age,room, condition, admission_date,emergency_contact,image]);
+            [patient_name,age,room, condition, admission_date,emergency_contact]);
 
             res.json(result.rows[0]);
 });

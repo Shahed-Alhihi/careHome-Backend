@@ -5,9 +5,8 @@ CREATE TABLE patients(
     room VARCHAR(20) NOT NULL,
     condition VARCHAR(50),
     admission_date DATE,
-    emergency_contact VARCHAR (300),
-    patient_image VARCHAR(255)
-);
+    emergency_contact VARCHAR (300)
+    );
 
 
 CREATE TABLE nurses(
