@@ -5,13 +5,14 @@ import db from "../db.js";
 const router=express.Router();
 
 router.get("/",async(req,res)=>{
-    const result=await db.query("SELECT * FROM medicines ORDER BY id");
+    const result=await db.query(`SELECT m.*,p.patient_name FROM medicines m JOIN patients p ON m.patient_id=p.id ORDER BY p.patient_name
+        `);
     res.json(result.rows);
 });
 
 
-router.get("/:patinetId",async(req,res)=>{
-    const result=await db.query("SELECT * FROM medicines WHERE patient_id= $1",[req.params.patinetId]);
+router.get("/:patientId",async(req,res)=>{
+    const result=await db.query(`SELECT * FROM medicines WHERE patient_id= $1 ORDER BY id`,[req.params.patientId]);
     res.json(result.rows);
 });
 
@@ -49,11 +50,11 @@ router.put("/:id", async(req,res)=>{
     notes}=req.body;
 
     const result=await db.query(
-            `UPDATE medicines(medicine_name=$1,
+            `UPDATE medicines SET medicine_name=$1,
     dosage=$2,
     medicine_time=$3,
     notes=$4 WHERE id=$5
-    RETURNING `,
+    RETURNING *`,
 [medicine_name,
     dosage,
     medicine_time,
