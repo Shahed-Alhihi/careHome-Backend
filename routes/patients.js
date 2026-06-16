@@ -1,6 +1,7 @@
 import express from "express";
 import db from "../db.js";
 
+//patint backend route
 
 const router=express.Router();
 
